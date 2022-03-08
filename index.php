@@ -1,0 +1,1 @@
+﻿<?php echo "test objet php"?>
