@@ -1,0 +1,7 @@
+.violet{
+    background-color: blueviolet;
+}
+
+.violet TD {
+    border:1px solid black;
+}

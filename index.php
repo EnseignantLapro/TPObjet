@@ -11,6 +11,19 @@
 </head>
 <body>
     
+<?php echo "<h1>Menu Exo</h1>"; ?>
+<ul>    
+    <li><a href="Exo1.php">Exo1</a></li>
+    <li><a href="Exo2.php">Exo2</a></li>
+    <li><a href="Exo3.php">Exo3</a></li>
+    <li><a href="Exo4.php">Exo4</a></li>
+    <li><a href="Exo5.php">Exo45 Alliance Personnage</a></li>
+    <li><a href="ExoJS.php">ExoJS</a></li>
+
+
+</ul>
+
+
         <?php echo "<h1>Test de la class USER</h1>"; ?>
 
         <form action="" method="Post">
@@ -19,24 +32,24 @@
             <input type="submit" name="connexion" value="ok">
         </form>
 
-
         <?php
-        
-        //ici on creer plein de faux User 
-        //mais en vrai ils sont en BDD
-        $U1 = new User("toto","1234");
-        $U2 = new User("titi","abcd");
-        $U3 = new User("tata","2345");
-        $U4 = new User("tutu","34567");
-        $U5 = new User("tete","abcd");
-
         $TableauUser = array();
+        try {
+        
+            $bdd = new PDO('mysql:host=192.168.65.193;dbname=filmnotation', 'UserWeb', 'UserWeb');
+            $req = "SELECT * from User";
+            $reponses = $bdd->query($req);
+            while ($donnees = $reponses->fetch())
+            {
+                //ORM je met les infos du tuple ( issu de la bdd)
+                //dans un nouvel objet User que je stock dans un tableau de user
+                array_push($TableauUser,new User($donnees['id'],$donnees['login'],$donnees['mdp']));
+            } 
 
-        array_push($TableauUser,$U1);
-        array_push($TableauUser,$U2);
-        array_push($TableauUser,$U3);
-        array_push($TableauUser,$U4);
-        array_push($TableauUser,$U5);
+        } catch (Exception $e) {
+            echo 'Exception reçue : ',  $e->getMessage(), "\n";
+        }
+        
        
         if(isset($_POST["connexion"])){
 
@@ -62,19 +75,7 @@
             if(!$trouve){
                 echo "User Inconnu vérifier othographe";
             }
-
-           
-
-
-
-
-        
         }
-            
-       
-
-       
-
         highlight_file(__FILE__);
         ?>
     </h1>
