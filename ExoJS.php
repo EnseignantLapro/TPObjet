@@ -13,9 +13,10 @@
     <h1>Test JS</h1>
    
     <h1>FIN Test JS</h1>
-    <div id="toto">SN1 Courage </div> 
+    <div id="toto">SN1 GO </div> 
     
     
     <script type="text/javascript" src="javascript.js"></script>
+    
 </body>
 </html>
