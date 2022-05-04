@@ -1,5 +1,8 @@
 
-<?php include ("Personnage.php");
+<?php 
+session_start();
+include ("Personnage.php");
+include ("User.php");
 highlight_file(__FILE__);
 
 try {
@@ -16,7 +19,7 @@ try {
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Exo1</title>
+    <title>CRUD</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='main.js'></script>
@@ -25,6 +28,16 @@ try {
     <h1> CRUD De Personnage </h1>
     <h2>(CREATE Insert) </h2>
     <?php
+        //vérification de la connexion
+        $user1 = new User(null,$pdo);
+        if(!$user1 -> isConnect()){
+            ?>
+            <li><a href="Connexion.php">Connect toi </a></li>
+           <?php
+        }else{
+            $user1->afficheUser();
+        }
+
         //Traitetement du formulaire
         if(isset($_POST['btnValider'])){
             $Perso1 = new Personnage(
@@ -33,7 +46,8 @@ try {
                 $_POST['vie'],
                 $_POST['forceAttaque'],
                 $pdo,
-                $_POST['image']);
+                $_POST['image'],
+                $user1 ->getId());
 
             $Perso1->saveInBdd(); //voir la méthode saveInBdd dans l'objet Personnage
         }
@@ -65,7 +79,7 @@ try {
         <?php
         
        //--------------------READ-------------
-        $Perso1 = new Personnage(null,null,null,null,$pdo,null);
+        $Perso1 = new Personnage(null,null,null,null,$pdo,null,null);
         $tabPersonnage = $Perso1->getAllPersonnage();
         echo "<ul>";
         foreach ($tabPersonnage as $Perso) {

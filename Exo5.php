@@ -43,7 +43,7 @@ try {
      {
          //ORM je met les infos du tuple ( issu de la bdd)
          //dans un nouvel objet Personnage que je stock dans un tableau de PErso
-         $Perso = new Personnage($donnees['id'],$donnees['pseudo'],$donnees['vie'],$donnees['forceAttaque'],$pdo);
+         $Perso = new Personnage($donnees['id'],$donnees['pseudo'],$donnees['vie'],$donnees['forceAttaque'],$pdo,'null');
          $Perso->setAllies();
 
          //ON Stock tous les personnages dans un tableau pour l'utiliser dans notre page

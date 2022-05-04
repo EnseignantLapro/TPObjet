@@ -20,8 +20,14 @@
     <li><a href="Exo5.php">Exo45 Alliance Personnage</a></li>
     <li><a href="ExoJS.php">ExoJS</a></li>
     <li><a href="testAPI.php">TestAPI</a></li>
+    
     <li><a href="CRUD_Read.php">CRUD Objet Read</a></li>
     <li><a href="CRUD_Create.php">CRUD Objet Create</a></li>
+    <li><a href="CRUD_Update.php">CRUD Objet Update</a></li>
+    <li><a href="CRUD_Delete.php">CRUD Objet Delete</a></li>
+    <li><a href="Connexion.php">Page De Connexion</a></li>
+   
+   
 
 
 
