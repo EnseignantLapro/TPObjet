@@ -1,5 +1,5 @@
 
-<?php include ("Personnage.php");
+<?php include ("../../Classes/Arme.php");
 highlight_file(__FILE__);
 
 try {
@@ -22,16 +22,16 @@ try {
     <script src='main.js'></script>
 </head>
 <body>
-    <h1> CRUD De Personnage </h1>
+    <h1> CRUD De Arme </h1>
     <h2>(READ Select) </h2>
     <?php
-        $Perso1 = new Personnage(null,null,null,null,$pdo,null,null);
-        $tabPersonnage = $Perso1->getAllPersonnage();
+        $Arme1 = new Arme(null,null,null,null,$pdo,null,null);
+        $tabArme = $Arme1->getAllArme();
         echo "<ul>";
-        foreach ($tabPersonnage as $Perso) {
+        foreach ($tabArme as $Arme) {
             echo "<li>";
-            echo $Perso->getPseudo();
-            echo '<img width="100px" src="'.$Perso->getImage().'" alt="'.$Perso->getPseudo().'">';
+            echo $Arme->getnom();
+            echo '<img width="100px" src="'.$Arme->getImage().'" alt="'.$Arme->getnom().'">';
             echo "</li>";
         }
         echo "</ul>";

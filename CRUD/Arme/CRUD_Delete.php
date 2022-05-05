@@ -1,5 +1,5 @@
 
-<?php include ("Personnage.php");
+<?php include ("../../Classes/Arme.php");
 highlight_file(__FILE__);
 
 try {
@@ -22,46 +22,46 @@ try {
     <script src='main.js'></script>
 </head>
 <body>
-    <h1> CRUD De Personnage </h1>
+    <h1> CRUD De Arme </h1>
     <h2>(SQL Delete) </h2>
-    <h3>Choix du perso à supprimer</h3>
+    <h3>Choix du Arme à supprimer</h3>
 
     <?php
-    $Perso1 = new Personnage(null,null,null,null,$pdo,null,null);
-    //Traitetement du formulaire du choix du perso
+    $Arme1 = new Arme(null,null,null,null,$pdo,null,null);
+    //Traitetement du formulaire du choix du Arme
     if(isset($_GET['btnSupprimer'])){
-        $Perso1->getPersonnageById($_GET['idCombatant']);
-        $Perso1->delete();
+        $Arme1->getArmeById($_GET['idCombatant']);
+        $Arme1->delete();
     }
 
-    //--------------------Choix Perso-------------
-    $tabPersonnage = $Perso1->getAllPersonnage();
+    //--------------------Choix Arme-------------
+    $tabArme = $Arme1->getAllArme();
     ?>
     <form action="" method="get">
         <select id="idCombatant" name="idCombatant">
             <?php
-            foreach ($tabPersonnage as  $ThePerso) {
-                echo '<option value="'.$ThePerso->getId().'">'.$ThePerso->getPseudo().'</option>';
+            foreach ($tabArme as  $TheArme) {
+                echo '<option value="'.$TheArme->getId().'">'.$TheArme->getnom().'</option>';
             }
             ?>
         </select>
-        <input type="submit" value="Supprimer ce perso" name="btnSupprimer">
+        <input type="submit" value="Supprimer ce Arme" name="btnSupprimer">
     </form>
 
     <?php
     //Formulaire HTML de modification -------------------------------------
-    //je dois avoir $id,$pseudo,$vie,$forceAttaque,$pdo,$image
+    //je dois avoir $id,$nom,$vie,$forceAttaque,$pdo,$image
     // id sera caché car il est utilisé pour la condition where de l'update
     ?>
  
 
     <?php 
-    $tabPersonnage = $Perso1->getAllPersonnage();
+    $tabArme = $Arme1->getAllArme();
     echo "<ul>";
-    foreach ($tabPersonnage as $Perso) {
+    foreach ($tabArme as $Arme) {
         echo "<li>";
-        echo $Perso->getPseudo();
-        echo '<img width="100px" src="'.$Perso->getImage().'" alt="'.$Perso->getPseudo().'">';
+        echo $Arme->getnom();
+        echo '<img width="100px" src="'.$Arme->getImage().'" alt="'.$Arme->getnom().'">';
         echo "</li>";
     }
     echo "</ul>";     

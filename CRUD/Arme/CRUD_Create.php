@@ -1,8 +1,8 @@
 
 <?php 
 session_start();
-include ("Personnage.php");
-include ("User.php");
+include ("../../Classes/Arme.php");
+include ("../../Classes/User.php");
 highlight_file(__FILE__);
 
 try {
@@ -25,7 +25,7 @@ try {
     <script src='main.js'></script>
 </head>
 <body>
-    <h1> CRUD De Personnage </h1>
+    <h1> CRUD De Arme </h1>
     <h2>(CREATE Insert) </h2>
     <?php
         //vérification de la connexion
@@ -40,27 +40,29 @@ try {
 
         //Traitetement du formulaire
         if(isset($_POST['btnValider'])){
-            $Perso1 = new Personnage(
+            //le nouveau Arme est créer avec sa relation 1N avec le User
+            //en effet on rajoute id du User dans le Arme pour indiquer que c'est le Arme du user
+            $Arme1 = new Arme(
                 null, //id
-                $_POST['pseudo'],
+                $_POST['nom'],
                 $_POST['vie'],
                 $_POST['forceAttaque'],
                 $pdo,
-                $_POST['image'],
-                $user1 ->getId());
+                $_POST['image']
+                );
 
-            $Perso1->saveInBdd(); //voir la méthode saveInBdd dans l'objet Personnage
+            $Arme1->saveInBdd(); //voir la méthode saveInBdd dans l'objet Arme
         }
         
         //Formulaire HTML
-        //je dois avoir $id,$pseudo,$vie,$forceAttaque,$pdo,$image
+        //je dois avoir $id,$nom,$vie,$forceAttaque,$pdo,$image
         // id sera null car il n'est pas encore en BDD
         ?>
 
         <form action="" method="post" >
       
-            <label for="pseudo">Pseudo: </label>
-            <input type="text" name="pseudo" id="pseudo" required value="Perso1">
+            <label for="nom">nom: </label>
+            <input type="text" name="nom" id="nom" required value="Arme1">
 
             <label for="vie">Vie: </label>
             <input type="text" name="vie" id="vie" required value="100">
@@ -69,9 +71,9 @@ try {
             <input type="text" name="forceAttaque" id="forceAttaque" value="15" required>
       
             <label for="image">Lien Image: </label>
-            <input type="text" name="image" id="image" required value="https://resize-gulli.jnsmedia.fr/r/890,__ym__/img//var/jeunesse/storage/images/gulli/quoi-d-neuf/cine-dvd/les-minions/personnages/kevin/26343313-1-fre-FR/Kevin.jpg">
+            <input type="text" name="image" id="image" required value="https://resize-gulli.jnsmedia.fr/r/890,__ym__/img//var/jeunesse/storage/images/gulli/quoi-d-neuf/cine-dvd/les-minions/Armes/kevin/26343313-1-fre-FR/Kevin.jpg">
        
-            <input type="submit" name="btnValider" value="Creer le Personnage">
+            <input type="submit" name="btnValider" value="Creer le Arme">
         
         </form>
 
@@ -79,19 +81,17 @@ try {
         <?php
         
        //--------------------READ-------------
-        $Perso1 = new Personnage(null,null,null,null,$pdo,null,null);
-        $tabPersonnage = $Perso1->getAllPersonnage();
+        $Arme1 = new Arme(null,null,null,null,$pdo,null,null);
+        $tabArme = $Arme1->getAllArme();
         echo "<ul>";
-        foreach ($tabPersonnage as $Perso) {
+        foreach ($tabArme as $Arme) {
             echo "<li>";
-            echo $Perso->getPseudo();
-            echo '<img width="100px" src="'.$Perso->getImage().'" alt="'.$Perso->getPseudo().'">';
+            echo $Arme->getnom();
+            echo '<img width="100px" src="'.$Arme->getImage().'" alt="'.$Arme->getnom().'">';
             echo "</li>";
         }
         echo "</ul>";
         
     ?>
-  
-
 </body>
 </html>

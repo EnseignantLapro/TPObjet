@@ -1,6 +1,6 @@
 <?php
 session_start();
-include ("User.php");
+include ("Classes/User.php");
 highlight_file(__FILE__);
 try {
     // ---------------Connexion à la BDD et récupération et traitement du formulaire
@@ -28,11 +28,12 @@ if(!$User1->isConnect()){
         <input type="submit" name="btnConnexion" value="Connect toi">
     </form>
 <?php 
+$User1 = null;
 }else{
     $User1->getUserByID($_SESSION['idUser']);
     $User1->afficheUser();
     ?>
-     <li><a href="CRUD_Create.php">Creer un Personnage</a></li>
+     <li><a href="CRUD/Personnage/CRUD_Create.php">Creer un Personnage</a></li>
     <?php
 }
 ?>

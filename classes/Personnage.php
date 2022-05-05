@@ -15,6 +15,9 @@ class Personnage{
     //entre un User qui peut avoir N Personnage
     private $idUser_;
 
+    //pour faire une liason NN je rajoute un tableau d'objet
+    private $tabArmes_ = array();
+
     public function __construct($id,$pseudo,$vie,$forceAttaque,$pdo,$image,$idUser){
         $this->id_=$id;
         $this->vie_=$vie;

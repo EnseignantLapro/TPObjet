@@ -1,5 +1,5 @@
 
-<?php include ("Personnage.php");
+<?php include ("../../Classes/Personnage.php");
 highlight_file(__FILE__);
 
 try {

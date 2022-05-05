@@ -21,10 +21,10 @@
     <li><a href="ExoJS.php">ExoJS</a></li>
     <li><a href="testAPI.php">TestAPI</a></li>
     
-    <li><a href="CRUD_Read.php">CRUD Objet Read</a></li>
-    <li><a href="CRUD_Create.php">CRUD Objet Create</a></li>
-    <li><a href="CRUD_Update.php">CRUD Objet Update</a></li>
-    <li><a href="CRUD_Delete.php">CRUD Objet Delete</a></li>
+    <li><a href="CRUD/Personnage/CRUD_Read.php">CRUD Objet Read Personnage</a></li>
+    <li><a href="CRUD/Personnage/CRUD_Create.php">CRUD Objet Create Personnage</a></li>
+    <li><a href="CRUD/Personnage/CRUD_Update.php">CRUD Objet Update Personnage</a></li>
+    <li><a href="CRUD/Personnage/CRUD_Delete.php">CRUD Objet Delete Personnage</a></li>
     <li><a href="Connexion.php">Page De Connexion</a></li>
    
    
