@@ -1,6 +1,6 @@
 
 
-<?php include ("Personnage.php"); 
+<?php include ("Classes/Personnage.php"); 
 highlight_file(__FILE__);
 
 try {
@@ -27,7 +27,7 @@ try {
     <div id="API">SN1 GO </div> 
     <?php
     //constructeur atend : $id,$pseudo,$vie,$forceAttaque,$pdo
-    $P1 = new Personnage(1,"julien",12,12,$pdo);
+    $P1 = new Personnage(1,"julien",12,12,$pdo,'1',"1");
     $P1->afficherPersonnage();
     ?>
 

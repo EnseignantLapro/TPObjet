@@ -30,12 +30,12 @@ try {
     $Arme1 = new Arme(null,null,null,null,$pdo,null,null);
     //Traitetement du formulaire du choix du Arme
     if(isset($_GET['btnModifier'])){
-        $Arme1->getArmeById($_GET['idCombatant']);
+        $Arme1->getArmeById($_GET['idArme']);
     }
 
     if(isset($_POST['btnConfirmerUpdate'])){
         $Arme1 = new Arme(
-            $_POST['idCombatant'], //viens du champ input type hidden
+            $_POST['idArme'], //viens du champ input type hidden
             $_POST['nom'],
             $_POST['vie'],
             $_POST['forceAttaque'],
@@ -49,7 +49,7 @@ try {
     $tabArme = $Arme1->getAllArme();
     ?>
     <form action="" method="get">
-        <select id="idCombatant" name="idCombatant">
+        <select id="idArme" name="idArme">
             <?php
             foreach ($tabArme as  $TheArme) {
                 echo '<option value="'.$TheArme->getId().'">'.$TheArme->getnom().'</option>';
@@ -80,7 +80,7 @@ try {
         <input type="text" name="image" id="image" required value="<?php echo $Arme1->getImage(); ?>">
 
         <!-- le champ hidden permet de mettre un id dans un input caché-->
-        <input type="Hidden" name="idCombatant" id="idCombatant" required value="<?php echo $Arme1->getId(); ?>">
+        <input type="Hidden" name="idArme" id="idArme" required value="<?php echo $Arme1->getId(); ?>">
        
         <input type="submit" name="btnConfirmerUpdate" value="Confirmer l'Update">
     

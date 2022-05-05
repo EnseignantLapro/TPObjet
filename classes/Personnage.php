@@ -154,6 +154,47 @@ class Personnage{
             $this->id_ = null;
         }
     }
+    public function addArme($Arme){
+        array_push($this->tabArmes_,$Arme);
+        //faire en SQL pour saver cette en BDD
+        $sql = "INSERT INTO `Equipement`
+        ( `idArme`, `idPersonnage`) 
+        VALUES ('".$Arme->getId()."','".$this->id_."')";
+        $this->PDO_->query($sql);
+        if(!$this->PDO_->lastInsertId()>0){
+            echo "erreur d'inserion equipent";
+        }
+        
+    }
+    //permet d'aller chercher les Armes du perso
+    public function loadArmes(){
+        $sql = "SELECT * FROM `Equipement`
+         WHERE `idPersonnage` = '".$this->id_."'";
+        $reponses = $this->PDO_->query($sql);
+        $this->tabArmes_ = array();
+        while ($donnees = $reponses->fetch())
+        {
+            $Arme1 = new Arme($donnees['idArme'],'','','',$this->PDO_,'');
+            $Arme1->getArmeById($donnees['idArme']);
+
+            //ON Stock tous les personnages dans un tableau pour l'utiliser dans notre page
+            array_push($this->tabArmes_,$Arme1);
+        } 
+
+        return $this->tabArmes_;
+        
+    }
+    public function AfficheArmes(){
+        echo "<ul>";
+        foreach ($this->tabArmes_ as $TheArme) {
+            echo "<li>";
+            echo $TheArme->getnom();
+            echo '<img width="100px" src="'.$TheArme->getImage().'" alt="'.$TheArme->getnom().'">';
+            echo "</li>";
+        }
+        echo "</ul>";
+        
+    }
 }
 //----------------------------FIN CLASS PERSONNAGE---------------------------------------
 

@@ -1,6 +1,8 @@
 <?php
 session_start();
 include ("Classes/User.php");
+include ("Classes/Personnage.php");
+include ("Classes/Arme.php");
 highlight_file(__FILE__);
 try {
     // ---------------Connexion à la BDD et récupération et traitement du formulaire
