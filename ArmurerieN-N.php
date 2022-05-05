@@ -1,8 +1,8 @@
 <?php
-//page pour associé une arme à un personnage
+//page pour associé une arme à un personnage-----------------------------
 //Liaison N-N
 include ("Connexion.php");
-
+highlight_file(__FILE__);
 if(!is_null($User1)){
     //étape 1 récupéer la liste des Personnage 
     $Arme1 = new Arme(null,null,null,null,$pdo,null,null);
@@ -47,8 +47,8 @@ if(!is_null($User1)){
         echo $Perso->getPseudo();
         echo '<img width="100px" src="'.$Perso->getImage().'" alt="'.$Perso->getPseudo().'">';
         //on doit avant charger les armes car elle ne sont pas récupérée dans le constructeur
-        $Perso->loadArmes();
-        $Perso->AfficheArmes();
+            $Perso->loadArmes();
+            $Perso->AfficheArmes();
         echo "</li>";
     }
     echo "</ul>";

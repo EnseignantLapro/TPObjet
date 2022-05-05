@@ -2,7 +2,7 @@
 //---------------------------- CLASS PERSONNAGE---------------------------------------
 
 highlight_file(__FILE__);
-
+echo "Chargement Class Personnage";
 class Personnage{
     private $id_;
     private $image_;
@@ -176,7 +176,6 @@ class Personnage{
         {
             $Arme1 = new Arme($donnees['idArme'],'','','',$this->PDO_,'');
             $Arme1->getArmeById($donnees['idArme']);
-
             //ON Stock tous les personnages dans un tableau pour l'utiliser dans notre page
             array_push($this->tabArmes_,$Arme1);
         } 

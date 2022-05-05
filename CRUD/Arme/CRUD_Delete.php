@@ -30,7 +30,7 @@ try {
     $Arme1 = new Arme(null,null,null,null,$pdo,null,null);
     //Traitetement du formulaire du choix du Arme
     if(isset($_GET['btnSupprimer'])){
-        $Arme1->getArmeById($_GET['idCombatant']);
+        $Arme1->getArmeById($_GET['idArme']);
         $Arme1->delete();
     }
 
@@ -38,7 +38,7 @@ try {
     $tabArme = $Arme1->getAllArme();
     ?>
     <form action="" method="get">
-        <select id="idCombatant" name="idCombatant">
+        <select id="idArme" name="idArme">
             <?php
             foreach ($tabArme as  $TheArme) {
                 echo '<option value="'.$TheArme->getId().'">'.$TheArme->getnom().'</option>';
